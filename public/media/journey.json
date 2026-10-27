@@ -1,0 +1,16 @@
+{
+  "fps": 29.97002997002997,
+  "frameCount": 300,
+  "duration": 10.01,
+  "width": 1280,
+  "height": 720,
+  "codec": "H.264",
+  "keyframeInterval": 1,
+  "bytes": 7993004,
+  "sourceTitle": "DJI 0147 Soothing South Coast Waves",
+  "author": "The No Nonsense Group",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:DJI_0147_Soothing_South_Coast_Waves.webm",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "modifications": "A 10.01-second excerpt beginning approximately two seconds into the source, resized to 1280\u00d7720 and re-encoded as silent all-intra H.264; poster extracted from the excerpt\u2019s first frame."
+}

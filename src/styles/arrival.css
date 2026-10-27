@@ -1,0 +1,151 @@
+.hero h1 > .hero-title-line {
+  display: block;
+  font-style: normal;
+  letter-spacing: -0.07em;
+}
+
+.hero h1 > .hero-title-emphasis {
+  font-style: italic;
+  letter-spacing: -0.075em;
+}
+
+.hero.hero-motion .hero-image {
+  transform: translate3d(0, calc(var(--hero-departure, 0) * 120px), 0)
+    scale(calc(1.04 + var(--hero-departure, 0) * 0.18));
+  transform-origin: 62% 57%;
+}
+
+.hero.hero-motion .hero-title-line {
+  transform: translate3d(
+    calc(var(--hero-departure, 0) * -70px),
+    calc(var(--hero-departure, 0) * 25px),
+    0
+  );
+}
+
+.hero.hero-motion .hero-title-emphasis {
+  transform: translate3d(
+    calc(var(--hero-departure, 0) * 135px),
+    calc(var(--hero-departure, 0) * 25px),
+    0
+  );
+}
+
+.hero.hero-motion .hero-eyebrow,
+.hero.hero-motion .hero-introduction {
+  opacity: calc(1 - var(--hero-departure, 0) * 0.65);
+  transform: translate3d(0, calc(var(--hero-departure, 0) * -35px), 0);
+}
+
+.hero-compass {
+  position: absolute;
+  right: 12%;
+  bottom: 24%;
+  width: 146px;
+  text-align: center;
+  color: #f8f5edcc;
+}
+
+.compass-north {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.compass-dial {
+  display: block;
+  width: 100%;
+  stroke: currentColor;
+  stroke-width: 0.7;
+}
+
+.compass-needle {
+  fill: #f8f5ed20;
+}
+.compass-caption {
+  display: block;
+  margin-top: 14px;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+}
+
+.hero.hero-motion .compass-dial {
+  transform: rotate(calc(var(--hero-departure, 0) * 110deg));
+}
+
+.hero.hero-motion .hero-compass {
+  transform: translate3d(0, calc(var(--hero-departure, 0) * -80px), 0);
+}
+
+.intro-title-line {
+  display: block;
+}
+.intro-photo-window {
+  position: relative;
+  overflow: hidden;
+  background: #344936;
+}
+.intro-photo-window > img {
+  transform: scale(1.01);
+}
+
+.intro-photo-corner {
+  position: absolute;
+  right: 18px;
+  bottom: 19px;
+  padding: 11px 13px;
+  border: 1px solid #f1eee760;
+  background: #1e2d238a;
+  color: #f8f5ed;
+  font-size: 8px;
+  line-height: 1.8;
+  letter-spacing: 0.12em;
+}
+
+.intro-motion .line-one {
+  --line-reveal: var(--intro-line-one, 1);
+}
+.intro-motion .line-two {
+  --line-reveal: var(--intro-line-two, 1);
+}
+.intro-motion .line-three {
+  --line-reveal: var(--intro-line-three, 1);
+}
+.intro-motion .intro-title-line {
+  opacity: calc(0.28 + var(--line-reveal) * 0.72);
+  transform: translate3d(0, calc((1 - var(--line-reveal)) * 48px), 0);
+}
+
+.intro-motion .intro-copy {
+  opacity: calc(0.4 + var(--intro-copy-reveal, 1) * 0.6);
+  transform: translate3d(0, calc((1 - var(--intro-copy-reveal, 1)) * 32px), 0);
+}
+
+.intro-motion .intro-photo-window {
+  clip-path: inset(calc((1 - var(--intro-image-reveal, 1)) * 18%) 0 0 0);
+  transform: translate3d(0, calc((1 - var(--intro-image-reveal, 1)) * 40px), 0);
+}
+
+.intro-motion .intro-photo-window > img {
+  transform: translate3d(0, var(--intro-image-pan, 0px), 0) scale(1.16);
+}
+
+.intro-motion .intro-dash {
+  transform: scaleX(calc(0.15 + var(--intro-line-three, 1) * 0.85));
+  transform-origin: left;
+}
+
+@media (max-width: 1100px) {
+  .hero-compass {
+    right: 10%;
+    bottom: 25%;
+    width: 116px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-compass {
+    display: none;
+  }
+}

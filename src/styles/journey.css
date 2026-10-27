@@ -1,0 +1,237 @@
+.journey-track {
+  position: relative;
+  background: #202820;
+  color: #fffdf7;
+  --beat-0: 1;
+  --beat-1: 0;
+  --beat-2: 0;
+  --film-progress: 0;
+}
+.journey-track.is-cinematic {
+  height: 300svh;
+}
+.journey-stage {
+  position: relative;
+  min-height: 640px;
+}
+.is-cinematic .journey-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+}
+.journey-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.journey-media > img,
+.journey-media > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+.journey-media > video {
+  opacity: 0;
+}
+.journey-media > video.is-ready {
+  opacity: 1;
+}
+.journey-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #12201ad1 0%, #12201a70 43%, #12201a08 78%),
+    linear-gradient(0deg, #12201a7a, transparent 38%);
+}
+.journey-kicker {
+  position: absolute;
+  z-index: 1;
+  top: 112px;
+  left: 5.5%;
+  right: 5.5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+.journey-kicker span:last-child {
+  color: #e6e7db;
+}
+.journey-visual-copy {
+  position: absolute;
+  top: 36%;
+  left: 8.5%;
+  width: min(700px, 75%);
+}
+.journey-beat {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+}
+.journey-beat > span {
+  font-size: 10px;
+  letter-spacing: 0.17em;
+  font-weight: 600;
+  color: #f1cfb3;
+}
+.journey-beat h3 {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(56px, 7vw, 112px);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  margin: 18px 0 24px;
+}
+.journey-beat p {
+  max-width: 380px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #f0f1e8;
+}
+.beat-0 {
+  opacity: var(--beat-0);
+}
+.beat-1 {
+  opacity: var(--beat-1);
+}
+.beat-2 {
+  opacity: var(--beat-2);
+}
+.journey-bottom {
+  position: absolute;
+  z-index: 1;
+  bottom: 48px;
+  left: 5.5%;
+  right: 5.5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 11px;
+  color: #eeefe5;
+}
+.journey-cue,
+.journey-bottom a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.journey-bottom a {
+  color: inherit;
+  text-decoration: none;
+}
+.journey-bottom a:hover {
+  text-decoration: underline;
+}
+.journey-timeline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #ffffff26;
+}
+.journey-timeline i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(var(--film-progress));
+  transform-origin: left;
+  background: #d38b63;
+}
+.is-cinematic .journey-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.film-fallback {
+  position: absolute;
+  bottom: 87px;
+  right: 5.5%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  padding: 8px 12px;
+  border: 1px solid #ffffff30;
+  border-radius: 5px;
+  background: #202820bd;
+}
+.film-fallback button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  padding: 0;
+  color: #fff8ed;
+  background: none;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.is-still .journey-stage {
+  padding: 0 6% 40px;
+}
+.is-still .journey-media {
+  position: relative;
+  margin: 0 -6.82% 44px;
+  height: clamp(300px, 50vw, 650px);
+}
+.is-still .journey-scrim {
+  background: linear-gradient(0deg, #20282033, transparent 60%);
+}
+.is-still .journey-kicker,
+.is-still .journey-visual-copy,
+.is-still .journey-timeline {
+  display: none;
+}
+.is-still .journey-accessible h2 {
+  font-family: var(--serif, Georgia, serif);
+  font-weight: 400;
+  font-size: clamp(34px, 4.5vw, 64px);
+  max-width: 760px;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  margin: 0 0 40px;
+}
+.is-still .journey-accessible article {
+  border-top: 1px solid #fffdf72b;
+  padding: 24px 0 26px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.5fr;
+  gap: 26px;
+  align-items: start;
+}
+.is-still .journey-accessible article > span {
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  color: #d3b99f;
+  padding-top: 7px;
+}
+.is-still .journey-accessible article h3 {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+.is-still .journey-accessible article p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #d4d9cb;
+  margin: 0;
+  max-width: 470px;
+}
+.is-still .journey-bottom {
+  position: static;
+  padding-top: 12px;
+}

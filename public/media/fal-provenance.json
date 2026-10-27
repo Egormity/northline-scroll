@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-10-27T15:58:35.293Z",
+  "provider": "fal.ai via Amazi AI Gateway",
+  "model": "blackforestlabs/flux-3-max/text-to-video",
+  "modelDocumentation": "https://fal.ai/models/blackforestlabs/flux-3-max/text-to-video/api",
+  "fictionalScenes": true,
+  "clips": [
+    {
+      "file": "/media/coast-flight.mp4",
+      "poster": "/images/coast-flight-poster.jpg",
+      "prompt": "One continuous cinematic aerial shot moving slowly forward parallel to a rugged fictional North Atlantic coastline. Moss-green sea cliffs on the right, dark slate ocean and delicate white surf on the left, a black sand cove in the distance. Overcast silver morning with a thin sea mist, restrained natural teal and warm earthy color grade, editorial outdoor travel film, physically plausible ocean motion and stable landscape geometry. Very smooth constant-speed drone movement, wide landscape composition, no sudden turns, no zoom, no cuts, no people, no buildings, no text, no logos. Silent footage.",
+      "input": {
+        "duration": 5,
+        "resolution": "720p",
+        "reasoning_level": "high",
+        "aspect_ratio": "16:9",
+        "generate_audio": false
+      },
+      "seed": 49242273,
+      "width": 1280,
+      "height": 704,
+      "fps": 24,
+      "frames": 121,
+      "duration": 5.041666666666667,
+      "audio": false,
+      "bytes": 636198,
+      "sha256": "1e13c25c45855ee244e2bd70308fdcc1f20601cf2f0bf6b38cec55bd0168f2a1",
+      "encoding": {
+        "codec": "H.264",
+        "pixelFormat": "yuv420p",
+        "crf": 25,
+        "maximumGop": 48,
+        "faststart": true
+      }
+    },
+    {
+      "file": "/media/forest-light.mp4",
+      "poster": "/images/forest-light-poster.jpg",
+      "prompt": "One continuous cinematic slow forward dolly at human walking height along a narrow moss-covered path in a fictional northern conifer forest. Tall dark spruce trunks frame the sides, delicate morning mist layers the distance, soft warm sunbeams move through drifting fog with subtle natural branch movement. Restrained moss-green, dark teal and warm gold color grade, photoreal outdoor travel film, stable forest geometry. Extremely smooth constant-speed camera, generous visual depth, no cuts, no zooms, no people, no animals, no text, no logos. Silent footage.",
+      "input": {
+        "duration": 5,
+        "resolution": "720p",
+        "reasoning_level": "high",
+        "aspect_ratio": "16:9",
+        "generate_audio": false
+      },
+      "seed": 1444700873,
+      "width": 1280,
+      "height": 704,
+      "fps": 24,
+      "frames": 121,
+      "duration": 5.041666666666667,
+      "audio": false,
+      "bytes": 1323077,
+      "sha256": "0bcd2cfcf239eb2334c1e2ac75f8922859bf4a55cd5fc8cdfdd7c9ab7963ba96",
+      "encoding": {
+        "codec": "H.264",
+        "pixelFormat": "yuv420p",
+        "crf": 25,
+        "maximumGop": 48,
+        "faststart": true
+      }
+    }
+  ]
+}

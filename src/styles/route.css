@@ -1,0 +1,208 @@
+.route-chapter {
+  background: #e9e5d9;
+  position: relative;
+  --route-offset: 0;
+}
+.route-chapter.is-tracing {
+  height: 220svh;
+  --route-offset: 1;
+}
+.route-stage {
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 54px;
+  overflow: hidden;
+}
+.is-tracing .route-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 740px;
+}
+.route-heading {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+.route-heading .eyebrow {
+  color: #727866;
+}
+.route-heading h2 {
+  margin-top: 26px;
+  font-family: var(--serif);
+  font-size: clamp(42px, 4.3vw, 72px);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.06;
+}
+.route-heading h2 em {
+  color: #9b7050;
+}
+.route-heading p {
+  color: #737968;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 24px;
+}
+.route-map {
+  position: absolute;
+  top: 135px;
+  right: 2%;
+  width: 70%;
+  color: #78836b;
+}
+.route-map svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.contour-line {
+  stroke: #aeb69d;
+  stroke-width: 1;
+  opacity: 0.38;
+}
+.route-base {
+  stroke: #b6bba6;
+  stroke-width: 2;
+  stroke-dasharray: 4 8;
+}
+.route-line {
+  stroke: #ad633f;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--route-offset);
+}
+.map-stop {
+  fill: #879372;
+}
+.map-stop.is-current {
+  fill: #ae6543;
+}
+.map-stop .map-stop-halo {
+  fill: #e9e5d9;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+.map-stop text {
+  font-size: 12px;
+  font-family: var(--sans);
+  letter-spacing: 0.1em;
+}
+.map-compass {
+  stroke: #7f8a70;
+}
+.map-compass text,
+.map-caption {
+  fill: #7f8a70;
+  stroke: none;
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+.route-stops {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 35px;
+  list-style: none;
+  margin: 110px 0 0;
+  padding: 0;
+}
+.is-tracing .route-stops {
+  position: absolute;
+  bottom: 55px;
+  left: 5.5%;
+  right: 5.5%;
+}
+.route-stops li {
+  border-top: 1px solid #c2c7b5;
+  padding-top: 22px;
+}
+.is-tracing .route-stops li.is-current {
+  border-color: #ad633f;
+}
+.route-stop-label {
+  display: flex;
+  gap: 17px;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  color: #7b816f;
+}
+.route-stop-label > span:first-child {
+  color: #b1714f;
+}
+.route-stops h3 {
+  margin: 16px 0 14px;
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.4vw, 36px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+.route-stops h3 button {
+  font: inherit;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: none;
+  border: 0;
+  text-align: left;
+}
+.route-stops h3 button:hover {
+  color: #ad633f;
+}
+.route-stops p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #68735c;
+  max-width: 340px;
+}
+@media (max-height: 850px) and (min-width: 761px) {
+  .is-tracing .route-stage {
+    min-height: 700px;
+    padding-top: 100px;
+  }
+  .route-map {
+    width: 62%;
+    top: 100px;
+  }
+  .route-heading h2 {
+    font-size: 48px;
+  }
+  .is-tracing .route-stops {
+    bottom: 35px;
+  }
+}
+@media (max-width: 760px) {
+  .route-stage {
+    padding-top: 62px;
+    padding-bottom: 54px;
+  }
+  .route-heading h2 {
+    font-size: clamp(43px, 10.5vw, 65px);
+  }
+  .route-map {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 116%;
+    margin-left: -8%;
+    margin-top: 22px;
+  }
+  .route-stops {
+    margin-top: 24px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .route-stops h3 {
+    font-size: 31px;
+  }
+  .route-stops p {
+    max-width: 500px;
+    font-size: 14px;
+  }
+}

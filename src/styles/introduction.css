@@ -1,0 +1,87 @@
+.introduction {
+  padding-top: 92px;
+  padding-bottom: 34px;
+}
+.intro-topline,
+.intro-bottomline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.intro-topline .eyebrow {
+  color: #65735f;
+}
+.tiny-mark {
+  font-size: 33px;
+  line-height: 1;
+  color: #8c9a7d;
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1.22fr 0.88fr 1fr;
+  gap: clamp(26px, 4vw, 70px);
+  align-items: start;
+  margin-top: 57px;
+}
+.intro-heading h2 {
+  font-family: var(--serif);
+  font-size: clamp(48px, 4.75vw, 80px);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+  font-weight: 400;
+}
+.intro-heading h2 em {
+  font-weight: 400;
+  color: #77866b;
+}
+.intro-dash {
+  display: block;
+  width: 41px;
+  height: 2px;
+  background: var(--accent);
+  margin-top: 37px;
+}
+.intro-copy {
+  padding-top: 10px;
+  max-width: 310px;
+}
+.intro-copy p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #687261;
+}
+.intro-copy p + p {
+  margin-top: 22px;
+}
+.intro-copy .text-link {
+  margin-top: 31px;
+}
+.intro-figure {
+  padding-top: 6px;
+}
+.intro-figure img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: center;
+}
+.intro-figure figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 14px;
+  font-size: 11px;
+  color: #6e7b64;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+.intro-figure figcaption > span:last-child {
+  white-space: nowrap;
+}
+.intro-bottomline {
+  border-top: 1px solid #d5dacd;
+  margin-top: 74px;
+  padding-top: 23px;
+  font-size: 12px;
+  color: #77836c;
+}
