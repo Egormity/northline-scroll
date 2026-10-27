@@ -6,7 +6,8 @@ The journal describes an imagined journey. It is a design demonstration, not a t
 
 ## Run locally
 
-Use Node.js 24 and pnpm 11 or newer:
+The local checkout is `/home/egormity/Desktop/egormity-repos/Egormity/northline-scroll`.
+Use Node.js 22.12 or newer and the pinned pnpm 11.7.0:
 
 ```bash
 pnpm install
@@ -20,6 +21,10 @@ pnpm build
 ```
 
 The `dist` folder can be served by a static host. Serve videos with their correct media type and HTTP byte-range support. Avoid caching the HTML permanently; hashed build assets can use long cache lifetimes.
+
+Development and Vite preview bind to `0.0.0.0` and use `PORT` when supplied. The Dockerfile
+provides Amazi-compatible Node 22 build and non-root static production stages. See
+[Amazi setup](docs/amazi.md) for application registration, source placement, and runtime settings.
 
 ## Desktop shortcut
 
@@ -45,6 +50,8 @@ Open `http://127.0.0.1:4409`. Use `--no-open` to start without opening a window,
 All media is stored with the project. The site does not require an account, a media provider key, or a runtime connection to a stock library.
 
 Version 0.2.0 adds layered scrolling scenes, chapter navigation, reading progress, and an interactive field-note deck. These effects settle when scrolling stops; the deck also responds to a desktop pointer. Motion-off and phone views retain the content and controls without the large movements.
+
+Version 0.3.0 adds Amazi runtime and container deployment support and relocates the desktop checkout.
 
 ## Verification
 

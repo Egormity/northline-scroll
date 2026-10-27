@@ -4,3 +4,6 @@ dist/
 .playwright/
 *.log
 __pycache__/
+.env
+.env.*
+!.env.example
