@@ -57,6 +57,8 @@ Version 0.3.0 adds Amazi runtime and container deployment support and relocates 
 
 Version 0.4.0 expands the journal with four distinct chapters, generated ambient films, explicit media lifecycle handling, readable formatted source and a reusable chapter-development guide.
 
+Version 0.4.1 documents the public template on `main` and importing it into Amazi.
+
 ## Verification
 
 ```bash

@@ -139,7 +139,7 @@ Finish with the implemented experience, important adaptations, verification actu
 
 ## Working example: Northline
 
-[Northline source repository](https://github.com/Egormity/northline-scroll) is a complete example of this guidance. Repository access may require authentication. The README explains local preview and desktop launch; a public production preview has not been added yet.
+[Northline source repository](https://github.com/Egormity/northline-scroll) is a public example of this guidance on the `main` branch. The README explains local preview and desktop launch; a public production preview has not been added yet.
 
 The fictional outdoor journal demonstrates a layered photographic hero, progressive typography, one Lenis controller over native scrolling, a pinned scroll-controlled film, an SVG route with keyboard-selectable waypoints, an expanding coast-film composition, a measured horizontal photo rail, a circular forest reveal with bounded scroll-driven particles, accessible photograph dialogs and a real field-notes download. Two generated ambient films use visibility-aware playback with pause controls; they are separate from the scrubbed film. Phones and reduced-motion layouts retain posters and normally flowing text without requesting video.
 

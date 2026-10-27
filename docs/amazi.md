@@ -15,9 +15,10 @@ the repository contents into the application root returned by Amazi. Keep that c
 source path; do not assume it is `.` or move other project applications. The files inside this
 repository have the same application-relative layout in either case.
 
-Connecting GitHub synchronizes the project workspace; it does not register or discover an
-application from these files. An initial Amazi repository connection expects no existing `main`
-branch. Northline's example branch is `feature/codex/northline-scroll/2026-10-27`.
+The public Northline template lives on `main`. Import its source into the configured application
+root. Connecting GitHub synchronizes the project workspace; it does not register or discover an
+application from these files. Amazi's initial GitHub connection expects a repository without
+`main`, so use a separate eligible output repository for a new synchronization connection.
 
 ## Application settings
 
