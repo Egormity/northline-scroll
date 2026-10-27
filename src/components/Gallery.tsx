@@ -6,12 +6,15 @@ import { useSceneProgress } from '../motion/useSceneProgress';
 import { GalleryDialog } from '../motion/GalleryDialog';
 import { galleryImages } from '../motion/galleryData';
 import '../styles/chapters.css';
+import '../styles/expedition.css';
 
 export const Gallery = () => {
   const track = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
   const rail = useRef<HTMLDivElement>(null);
+  const cardCenters = useRef<number[]>([]);
+  const viewportWidth = useRef(0);
   const [distance, setDistance] = useState(0);
   const [active, setActive] = useState(0);
   const activeRef = useRef(0);
@@ -31,6 +34,11 @@ export const Gallery = () => {
     const row = rail.current!;
     const measure = () => {
       const travel = enhanced ? Math.max(0, row.scrollWidth - view.clientWidth) : 0;
+      viewportWidth.current = view.clientWidth;
+      cardCenters.current = Array.from(row.children, (child) => {
+        const card = child as HTMLElement;
+        return card.offsetLeft + card.offsetWidth / 2;
+      });
       setDistance(travel);
       if (travel > 0) element.style.height = `${stage.current!.offsetHeight + travel}px`;
       else element.style.removeProperty('height');
@@ -48,6 +56,11 @@ export const Gallery = () => {
     if (!rail.current || !enhanced) return;
     const offset = progress * distance;
     rail.current.style.transform = `translate3d(${-offset}px,0,0)`;
+    Array.from(rail.current.children).forEach((child, index) => {
+      const relative = (cardCenters.current[index] - offset - viewportWidth.current / 2) / Math.max(1, viewportWidth.current);
+      (child as HTMLElement).style.setProperty('--photo-pan', `${Math.max(-24, Math.min(24, relative * -38))}px`);
+    });
+    track.current?.style.setProperty('--gallery-progress', String(progress));
     selectActive(Math.round(progress * (galleryImages.length - 1)));
   }, { enabled: enhanced && distance > 0 });
 
@@ -77,12 +90,13 @@ export const Gallery = () => {
       }}>
         <div className="gallery-rail" ref={rail}>
           {galleryImages.map((item, index) => <button className="journal-card" type="button" key={item.image} aria-label={`Open photograph: ${item.title}`} onFocus={(event) => { if (event.currentTarget.matches(':focus-visible')) goTo(index, true); }} onClick={() => setOpened(index)}>
-            <div className="journal-photo"><img src={`${import.meta.env.BASE_URL}images/${item.image}`} alt={item.alt} loading="lazy" width="1600" height="1100" /><span className="journal-photo-action"><ArrowUpRight size={23} /></span><span className="journal-photo-label">{item.label}</span></div>
+            <div className="journal-photo"><img src={`${import.meta.env.BASE_URL}images/${item.image}`} alt={item.alt} loading="lazy" width="1600" height="1100" /><span className="journal-photo-number" aria-hidden="true">0{index + 1}</span><span className="journal-photo-action"><ArrowUpRight size={23} /></span><span className="journal-photo-label">{item.label}</span></div>
             <div className="journal-caption"><h3>{item.title}</h3><span>{item.text}</span></div>
           </button>)}
         </div>
       </div>
       <div className="gallery-footnote"><span>LANDSCAPES FOR A LITTLE DAYDREAMING</span><span className="gallery-position" aria-hidden="true">{galleryImages.map((_item, index) => <i className={active === index ? 'is-active' : ''} key={index} />)}</span><span>THE NORTHLINE JOURNAL</span></div>
+      <div className="gallery-travel" aria-hidden="true"><i /></div>
     </div>
     {opened !== null && <GalleryDialog index={opened} onChange={setOpened} onClose={() => setOpened(null)} />}
   </section>;

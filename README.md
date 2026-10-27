@@ -35,12 +35,16 @@ Open `http://127.0.0.1:4409`. Use `--no-open` to start without opening a window,
 
 - Scroll with a mouse wheel, trackpad, touch, keyboard, or the scrollbar.
 - Follow the section links to jump between chapters.
+- The opening photograph, split headline, compass, and forest introduction move in layers as you scroll on desktop.
 - The desktop film follows page position in both directions.
+- Its frame opens into the landscape; chapter controls jump to three moments in the story.
 - The photo chapter moves horizontally on desktop; its controls and keyboard navigation remain usable.
-- Open photographs for a closer look and download the field notes.
+- Open photographs for a closer look, turn through the three field-note cards, and download the full notes.
 - Turn motion off, or use your system's reduced-motion preference, for a simpler layout. Phones retain native scrolling and a lighter composition.
 
 All media is stored with the project. The site does not require an account, a media provider key, or a runtime connection to a stock library.
+
+Version 0.2.0 adds layered scrolling scenes, chapter navigation, reading progress, and an interactive field-note deck. These effects settle when scrolling stops; the deck also responds to a desktop pointer. Motion-off and phone views retain the content and controls without the large movements.
 
 ## Verification
 
