@@ -2,16 +2,29 @@ import { useLayoutEffect, useRef, type RefObject } from 'react';
 import { useMotion } from './MotionProvider';
 import { sceneProgress } from './math';
 
-interface Options { mode?: 'sticky' | 'viewport'; enabled?: boolean }
+interface Options {
+  mode?: 'sticky' | 'viewport';
+  enabled?: boolean;
+}
 
-export const useSceneProgress = (ref: RefObject<HTMLElement | null>, onProgress: (progress: number) => void, { mode = 'sticky', enabled = true }: Options = {}) => {
+export const useSceneProgress = (
+  ref: RefObject<HTMLElement | null>,
+  onProgress: (progress: number) => void,
+  { mode = 'sticky', enabled = true }: Options = {},
+) => {
   const { reducedMotion } = useMotion();
   const callback = useRef(onProgress);
-  useLayoutEffect(() => { callback.current = onProgress; });
+  useLayoutEffect(() => {
+    callback.current = onProgress;
+  });
   useLayoutEffect(() => {
     const element = ref.current;
     if (!element) return;
-    if (!enabled || reducedMotion) { callback.current(0); element.dataset.progress = '0'; return; }
+    if (!enabled || reducedMotion) {
+      callback.current(0);
+      element.dataset.progress = '0';
+      return;
+    }
     let frame = 0;
     let start = 0;
     let travel = 0;
@@ -28,7 +41,10 @@ export const useSceneProgress = (ref: RefObject<HTMLElement | null>, onProgress:
         const stage = element.querySelector<HTMLElement>('[data-stage]');
         const inset = stage ? parseFloat(getComputedStyle(stage).top) || 0 : 0;
         start = mode === 'viewport' ? top - window.innerHeight : top - inset;
-        travel = mode === 'viewport' ? rect.height + window.innerHeight : rect.height - (stage?.offsetHeight ?? window.innerHeight);
+        travel =
+          mode === 'viewport'
+            ? rect.height + window.innerHeight
+            : rect.height - (stage?.offsetHeight ?? window.innerHeight);
         measureNeeded = false;
       }
       const progress = sceneProgress(window.scrollY, start, travel);
@@ -37,8 +53,13 @@ export const useSceneProgress = (ref: RefObject<HTMLElement | null>, onProgress:
       element.dataset.progress = progress.toFixed(5);
       callback.current(progress);
     };
-    const schedule = () => { if (!disposed && !frame) frame = requestAnimationFrame(update); };
-    const measure = () => { measureNeeded = true; schedule(); };
+    const schedule = () => {
+      if (!disposed && !frame) frame = requestAnimationFrame(update);
+    };
+    const measure = () => {
+      measureNeeded = true;
+      schedule();
+    };
     const observer = new ResizeObserver(measure);
     observer.observe(element);
     observer.observe(document.body);

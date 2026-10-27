@@ -10,9 +10,18 @@ class FakeVideo extends EventTarget {
   requests: number[] = [];
   pause = vi.fn();
   private time = 0;
-  get currentTime() { return this.time; }
-  set currentTime(value: number) { this.time = value; this.requests.push(value); this.seeking = true; }
-  finishSeek() { this.seeking = false; this.dispatchEvent(new Event('seeked')); }
+  get currentTime() {
+    return this.time;
+  }
+  set currentTime(value: number) {
+    this.time = value;
+    this.requests.push(value);
+    this.seeking = true;
+  }
+  finishSeek() {
+    this.seeking = false;
+    this.dispatchEvent(new Event('seeked'));
+  }
 }
 
 describe('video target scheduling', () => {
@@ -24,8 +33,12 @@ describe('video target scheduling', () => {
     waiting.forEach((callback) => callback(0));
   };
   beforeEach(() => {
-    callbacks = new Map(); nextId = 0;
-    vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => { callbacks.set(++nextId, callback); return nextId; });
+    callbacks = new Map();
+    nextId = 0;
+    vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => {
+      callbacks.set(++nextId, callback);
+      return nextId;
+    });
     vi.stubGlobal('cancelAnimationFrame', (id: number) => callbacks.delete(id));
   });
   afterEach(() => vi.unstubAllGlobals());
@@ -33,18 +46,26 @@ describe('video target scheduling', () => {
   it('coalesces pending targets and seeks directly to the latest requested frame', () => {
     const video = new FakeVideo();
     const ready = vi.fn();
-    const controller = createVideoScrubber(video as unknown as HTMLVideoElement, { fps: 30, frameCount: 240, duration: 8 }, ready, vi.fn());
+    const controller = createVideoScrubber(
+      video as unknown as HTMLVideoElement,
+      { fps: 30, frameCount: 240, duration: 8 },
+      ready,
+      vi.fn(),
+    );
     advance();
     expect(video.requests).toHaveLength(1);
     controller.setProgress(0.2);
     controller.setProgress(0.6);
     advance();
     expect(video.requests).toHaveLength(1);
-    video.finishSeek(); advance();
+    video.finishSeek();
+    advance();
     expect(video.requests).toHaveLength(2);
     expect(video.currentTime).toBeCloseTo((143 + 0.25) / 30);
-    video.finishSeek(); advance();
-    controller.setProgress(0.6); advance();
+    video.finishSeek();
+    advance();
+    controller.setProgress(0.6);
+    advance();
     expect(video.requests).toHaveLength(2);
     expect(ready).toHaveBeenCalledTimes(1);
     controller.destroy();
@@ -54,16 +75,24 @@ describe('video target scheduling', () => {
     const video = new FakeVideo();
     video.readyState = 0;
     video.duration = NaN;
-    const controller = createVideoScrubber(video as unknown as HTMLVideoElement, { fps: 30, frameCount: 240, duration: 8 }, vi.fn(), vi.fn());
-    controller.setProgress(1); advance();
+    const controller = createVideoScrubber(
+      video as unknown as HTMLVideoElement,
+      { fps: 30, frameCount: 240, duration: 8 },
+      vi.fn(),
+      vi.fn(),
+    );
+    controller.setProgress(1);
+    advance();
     expect(video.requests).toHaveLength(0);
     video.duration = 8;
     video.readyState = 1;
-    video.dispatchEvent(new Event('loadedmetadata')); advance();
+    video.dispatchEvent(new Event('loadedmetadata'));
+    advance();
     expect(video.currentTime).toBeLessThan(8);
     controller.setProgress(0.4);
     controller.destroy();
-    video.finishSeek(); advance();
+    video.finishSeek();
+    advance();
     expect(video.requests).toHaveLength(1);
   });
 
@@ -71,7 +100,12 @@ describe('video target scheduling', () => {
     const video = new FakeVideo();
     video.error = { code: 4 };
     const failed = vi.fn();
-    const controller = createVideoScrubber(video as unknown as HTMLVideoElement, { fps: 30, frameCount: 240, duration: 8 }, vi.fn(), failed);
+    const controller = createVideoScrubber(
+      video as unknown as HTMLVideoElement,
+      { fps: 30, frameCount: 240, duration: 8 },
+      vi.fn(),
+      failed,
+    );
     expect(failed).toHaveBeenCalledTimes(1);
     expect(video.requests).toHaveLength(0);
     controller.destroy();

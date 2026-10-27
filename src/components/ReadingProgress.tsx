@@ -8,9 +8,14 @@ export const ReadingProgress = () => {
     let travel = 1;
     const update = () => {
       frame = 0;
-      line.current?.style.setProperty('--reading-progress', String(Math.max(0, Math.min(1, window.scrollY / travel))));
+      line.current?.style.setProperty(
+        '--reading-progress',
+        String(Math.max(0, Math.min(1, window.scrollY / travel))),
+      );
     };
-    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
     const measure = () => {
       travel = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       schedule();
@@ -27,5 +32,9 @@ export const ReadingProgress = () => {
       window.removeEventListener('scroll', schedule);
     };
   }, []);
-  return <span className="reading-progress" aria-hidden="true"><span ref={line} /></span>;
+  return (
+    <span className="reading-progress" aria-hidden="true">
+      <span ref={line} />
+    </span>
+  );
 };

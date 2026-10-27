@@ -1,6 +1,6 @@
 # How Northline scrolls
 
-Northline is an example of the Scroll-driven websites skill, not a required template. Its fictional outdoor journal combines a quiet editorial section with two explicit scroll scenes. Use the mechanics where they support a different site's content; do not copy the theme or add video to every page.
+Northline is an example of the Scroll-driven websites skill, not a required template. Its fictional outdoor journal combines a paced sequence of editorial, typographic, filmed, mapped and photographic chapters. Use the mechanics where they support a different site's content; do not copy the theme or add video to every page.
 
 ## Native page movement
 
@@ -48,7 +48,21 @@ Arrow controls and keyboard focus can bring a photo into view without requiring 
 
 `ReadingProgress.tsx` measures document travel on layout changes and writes a single header-line transform on scroll. Scene effects stop changing when input stops; there are no perpetual decorative animation loops. Additional motion uses the existing scene hook and scoped CSS variables, with no new animation dependency.
 
+## Added chapters and ambient films
+
+`QuietManifesto` emphasizes authored words as the reader passes through a full-width editorial passage. Its accessible heading has one complete phrase; decorative split words are hidden from assistive technology. All words return to full readability on phones and with motion off.
+
+`RouteChapter` draws a normalized SVG path and updates three waypoints from sticky progress. Its buttons use the existing page controller, preserve focus and can jump to the corresponding hold. `routeData.ts` contains the path, coordinates and content. The route is deliberately fictional and visibly marked as unsuitable for navigation. Motion-off mode draws the whole route in normal flow.
+
+`CoastInterlude` introduces an ambient coast film with a moving title and a changing visual aperture. `ForestChapter` opens a circular mask around a second film and presents 24 bounded decorative motes. Mote positions are deterministic functions of scroll progress, so they reverse and settle without a continuous particle simulation. Masks apply only to media layers; film controls remain reachable.
+
+`AmbientFilm` and `useFilmVisibility` own ordinary playback separately from scrubbing. Each film mounts near its chapter and plays only while visible, motion is enabled, the layout is desktop and the document is visible. Pause choices persist across leaving and returning to the scene. Autoplay rejection exposes play, errors preserve posters, and unmount/visibility changes pause the element. Phones and reduced-motion layouts never mount the video elements. The clips are generated assets with their own [provenance](generated-films.md).
+
+See [extending.md](extending.md) for a scene map and the workflow for adding independent chapters without changing the decoder or creating another scroll controller.
+
 ## Evidence and limits
+
+The browser suite also checks route reversal and keyboard selection, removal of extra pinned travel, bounded particle updates, ambient playback/pause ownership, and the new chapters at 320px without video requests or page overflow. A local valid clip is substituted in the ambient lifecycle test; a separate test verifies the two real checked-in generated clips, their byte ranges, decoded dimensions/duration, playback and keyboard pause controls. No live provider request is needed to run the suite.
 
 The browser suite checks real wheel input and reversal, keyboard page movement, focused anchor destinations, the actual notes download, photo dialogs, and live reduced-motion changes. It checks that narrow and motion-off layouts do not fetch the video.
 

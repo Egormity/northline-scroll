@@ -5,12 +5,20 @@ test('smooths real wheel input, preserves anchors and downloads usable notes', a
   const errors: string[] = [];
   const external: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
-  page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
-  page.on('request', (request) => { if (!request.url().startsWith('http://127.0.0.1:4410')) external.push(request.url()); });
+  page.on('console', (message) => {
+    if (message.type() === 'error') errors.push(message.text());
+  });
+  page.on('request', (request) => {
+    if (!request.url().startsWith('http://127.0.0.1:4410')) external.push(request.url());
+  });
   await page.goto('/');
   await expect(page.getByRole('heading', { name: /A little\s*further\./ })).toBeVisible();
   await expect(page.locator('html')).toHaveClass(/lenis/);
-  await expect.poll(() => page.locator('.hero-image').evaluate((image) => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+  await expect
+    .poll(() =>
+      page.locator('.hero-image').evaluate((image) => (image as HTMLImageElement).naturalWidth),
+    )
+    .toBeGreaterThan(0);
   await page.screenshot({ path: '.playwright/desktop-hero.png' });
   await page.evaluate(() => {
     const capture = window as unknown as { wheelSamples: number[] };
@@ -25,7 +33,9 @@ test('smooths real wheel input, preserves anchors and downloads usable notes', a
   await page.mouse.move(1300, 700);
   await page.mouse.wheel(0, 420);
   await page.waitForTimeout(1500);
-  const samples = await page.evaluate(() => (window as unknown as { wheelSamples: number[] }).wheelSamples);
+  const samples = await page.evaluate(
+    () => (window as unknown as { wheelSamples: number[] }).wheelSamples,
+  );
   expect(new Set(samples.map(Math.round)).size).toBeGreaterThan(5);
   expect(await page.evaluate(() => scrollY)).toBeGreaterThan(410);
   expect(await page.evaluate(() => scrollY)).toBeLessThan(430);
@@ -55,13 +65,19 @@ test('smooths real wheel input, preserves anchors and downloads usable notes', a
   expect(errors).toEqual([]);
 });
 
-test('honors reduced motion before loading film and responds to live preference changes', async ({ page }) => {
+test('honors reduced motion before loading film and responds to live preference changes', async ({
+  page,
+}) => {
   const videoRequests: string[] = [];
-  page.on('request', (request) => { if (request.url().endsWith('journey.mp4')) videoRequests.push(request.url()); });
+  page.on('request', (request) => {
+    if (request.url().endsWith('journey.mp4')) videoRequests.push(request.url());
+  });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   await expect(page.locator('html')).toHaveAttribute('data-motion', 'reduced');
-  await expect(page.getByRole('button', { name: 'Reduced motion follows your system preference' })).toBeDisabled();
+  await expect(
+    page.getByRole('button', { name: 'Reduced motion follows your system preference' }),
+  ).toBeDisabled();
   await expect(page.locator('html')).not.toHaveClass(/lenis/);
   expect(videoRequests).toEqual([]);
   await expect(page.locator('#story')).toBeVisible();
@@ -72,9 +88,13 @@ test('honors reduced motion before loading film and responds to live preference 
   await expect(page.locator('html')).toHaveClass(/lenis/);
 });
 
-test('keeps a narrow viewport readable with native scrolling and a lighter film chapter', async ({ page }) => {
+test('keeps a narrow viewport readable with native scrolling and a lighter film chapter', async ({
+  page,
+}) => {
   const videoRequests: string[] = [];
-  page.on('request', (request) => { if (request.url().endsWith('journey.mp4')) videoRequests.push(request.url()); });
+  page.on('request', (request) => {
+    if (request.url().endsWith('journey.mp4')) videoRequests.push(request.url());
+  });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   await expect(page.getByRole('heading', { name: /A little\s*further\./ })).toBeVisible();

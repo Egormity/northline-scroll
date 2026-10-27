@@ -21,14 +21,41 @@ export const Hero = () => {
   useSceneProgress(section, update, { mode: 'viewport', enabled: enhanced });
 
   return (
-    <section className={`hero ${enhanced ? 'hero-motion' : ''}`} id="home" ref={section} aria-labelledby="hero-title">
-      <div className="hero-media" aria-hidden="true"><img className="hero-image" src={`${import.meta.env.BASE_URL}images/coast.webp`} alt="" fetchPriority="high" /><div className="hero-shade" /></div>
-      <div className="hero-content">
-        <p className="eyebrow hero-eyebrow"><span className="small-star">✳</span>A FIELD JOURNAL FROM THE QUIETER SIDE</p>
-        <h1 id="hero-title"><span className="hero-title-line">A little</span><span className="hero-title-line hero-title-emphasis">further.</span></h1>
-        <div className="hero-introduction"><span className="fine-rule" /><p>Away from the everyday.<br />Closer to what matters.</p></div>
+    <section
+      className={`hero ${enhanced ? 'hero-motion' : ''}`}
+      id="home"
+      ref={section}
+      aria-labelledby="hero-title"
+    >
+      <div className="hero-media" aria-hidden="true">
+        <img
+          className="hero-image"
+          src={`${import.meta.env.BASE_URL}images/coast.webp`}
+          alt=""
+          fetchPriority="high"
+        />
+        <div className="hero-shade" />
       </div>
-      <div className="hero-side-note" aria-hidden="true">FRESH AIR. OPEN ENDS.</div>
+      <div className="hero-content">
+        <p className="eyebrow hero-eyebrow">
+          <span className="small-star">✳</span>A FIELD JOURNAL FROM THE QUIETER SIDE
+        </p>
+        <h1 id="hero-title">
+          <span className="hero-title-line">A little</span>
+          <span className="hero-title-line hero-title-emphasis">further.</span>
+        </h1>
+        <div className="hero-introduction">
+          <span className="fine-rule" />
+          <p>
+            Away from the everyday.
+            <br />
+            Closer to what matters.
+          </p>
+        </div>
+      </div>
+      <div className="hero-side-note" aria-hidden="true">
+        FRESH AIR. OPEN ENDS.
+      </div>
       <div className="hero-compass" aria-hidden="true">
         <span className="compass-north">N</span>
         <svg className="compass-dial" viewBox="0 0 144 144" fill="none">
@@ -41,8 +68,23 @@ export const Hero = () => {
         <span className="compass-caption">FOLLOW YOUR CURIOSITY</span>
       </div>
       <div className="hero-bottom">
-        <a className="journey-link" href="#story"><span className="round-arrow"><ArrowDown size={21} strokeWidth={1.4} /></span><span>Begin the journey<small>There is no hurry.</small></span></a>
-        <div className="hero-edition"><span>THE NORTHLINE JOURNAL</span><p>A few moments worth<br />taking the long way for.</p><ArrowDownRight size={24} strokeWidth={1} /></div>
+        <a className="journey-link" href="#story">
+          <span className="round-arrow">
+            <ArrowDown size={21} strokeWidth={1.4} />
+          </span>
+          <span>
+            Begin the journey<small>There is no hurry.</small>
+          </span>
+        </a>
+        <div className="hero-edition">
+          <span>THE NORTHLINE JOURNAL</span>
+          <p>
+            A few moments worth
+            <br />
+            taking the long way for.
+          </p>
+          <ArrowDownRight size={24} strokeWidth={1} />
+        </div>
       </div>
     </section>
   );

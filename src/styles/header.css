@@ -1,0 +1,104 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  height: 92px;
+  padding: 0 clamp(22px, 3.5vw, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  color: #f8f5ed;
+  transition:
+    background-color 180ms,
+    color 180ms;
+}
+.site-header.on-hero {
+  background: linear-gradient(#14201773, #14201705);
+}
+.site-header.is-solid {
+  background: var(--paper);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.brand-link {
+  flex-shrink: 0;
+}
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.wordmark > svg {
+  width: 29px;
+  height: 29px;
+}
+.wordmark > span {
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  position: relative;
+}
+.wordmark-dot {
+  font-size: 9px;
+  letter-spacing: 0;
+  vertical-align: top;
+  display: inline-block;
+  margin: -1px 0 0 3px;
+}
+.main-nav {
+  display: flex;
+  gap: 36px;
+  margin-left: 20px;
+}
+.main-nav a {
+  font-size: 13px;
+  line-height: 1.5;
+  position: relative;
+  padding: 7px 0;
+}
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms;
+}
+.main-nav a:hover::after {
+  transform: scaleX(1);
+}
+.mobile-nav-arrow {
+  display: none;
+}
+.motion-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid #f7f4ec77;
+  background: #14201712;
+  border-radius: 30px;
+  padding: 10px 15px;
+  font-size: 12px;
+  min-height: 40px;
+}
+.motion-button:hover:not(:disabled) {
+  background: #f7f4ec16;
+}
+.is-solid .motion-button {
+  border-color: #b9bfb0;
+  background: transparent;
+}
+.is-solid .motion-button:hover:not(:disabled) {
+  background: #e4e7dc;
+}
+.motion-button:disabled {
+  opacity: 0.7;
+}

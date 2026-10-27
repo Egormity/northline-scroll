@@ -1,6 +1,6 @@
 # Northline
 
-A cinematic, scroll-driven outdoor journal: a photographic opening, a film controlled by page position, a horizontal photo chapter, and downloadable field notes. It is a working example for Amazi's Scroll-driven websites skill.
+A cinematic, scroll-driven outdoor journal: a photographic opening, typographic reveals, a scroll-controlled film, an illustrated route, ambient coast and forest films, a horizontal photo chapter, and downloadable field notes. It is a working example for Amazi's Scroll-driven websites skill.
 
 The journal describes an imagined journey. It is a design demonstration, not a travel service or a guide to a real route. Media provenance and licenses are documented in [docs/assets.md](docs/assets.md).
 
@@ -43,6 +43,8 @@ Open `http://127.0.0.1:4409`. Use `--no-open` to start without opening a window,
 - The opening photograph, split headline, compass, and forest introduction move in layers as you scroll on desktop.
 - The desktop film follows page position in both directions.
 - Its frame opens into the landscape; chapter controls jump to three moments in the story.
+- Trace an imagined route, choose its waypoints with the keyboard, and reveal a forest through a widening circular window.
+- Watch two generated landscape films with visible pause controls. Playback stops offscreen; decorative forest particles follow scroll and need no permanent animation loop.
 - The photo chapter moves horizontally on desktop; its controls and keyboard navigation remain usable.
 - Open photographs for a closer look, turn through the three field-note cards, and download the full notes.
 - Turn motion off, or use your system's reduced-motion preference, for a simpler layout. Phones retain native scrolling and a lighter composition.
@@ -53,9 +55,12 @@ Version 0.2.0 adds layered scrolling scenes, chapter navigation, reading progres
 
 Version 0.3.0 adds Amazi runtime and container deployment support and relocates the desktop checkout.
 
+Version 0.4.0 expands the journal with four distinct chapters, generated ambient films, explicit media lifecycle handling, readable formatted source and a reusable chapter-development guide.
+
 ## Verification
 
 ```bash
+pnpm format:check
 pnpm test
 pnpm build
 pnpm test:browser
@@ -64,4 +69,4 @@ python3 -m unittest discover -s scripts -p 'test_*.py'
 
 Browser checks use installed Google Chrome and a temporary local server on port 4410. Set `CHROME_PATH` for another Chromium executable. Evidence and screenshots are written under the ignored `.playwright` folder.
 
-The implementation is organized around reusable motion hooks, independently readable chapters, and a single native-scroll-based smoothing controller. See [the implementation notes](docs/scroll-system.md) for scene mechanics, video preparation, and fallback decisions. [Third-party notices](THIRD_PARTY_NOTICES.md) identify dependencies and references.
+The implementation is organized around reusable motion hooks, independently readable chapters, and a single native-scroll-based smoothing controller. See [the implementation notes](docs/scroll-system.md) for scene mechanics, video preparation, and fallback decisions. Read [the extension guide](docs/extending.md) to add a chapter, replace a film or adapt the project as a template. [Third-party notices](THIRD_PARTY_NOTICES.md) identify dependencies and references.

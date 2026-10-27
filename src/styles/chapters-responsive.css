@@ -1,0 +1,143 @@
+@media (max-height: 780px) and (min-width: 761px) {
+  .is-horizontal .gallery-stage {
+    min-height: 620px;
+    padding-top: 78px;
+  }
+  .gallery-heading {
+    margin-bottom: 25px;
+  }
+  .gallery-heading h2 {
+    font-size: 47px;
+  }
+  .journal-photo {
+    height: 36svh;
+    min-height: 240px;
+  }
+  .gallery-footnote {
+    padding-top: 22px;
+  }
+}
+@media (max-width: 1050px) {
+  .gallery-intro {
+    gap: 18px;
+  }
+  .gallery-intro > p {
+    max-width: 160px;
+  }
+  .journal-caption {
+    display: block;
+  }
+  .journal-caption > span {
+    display: block;
+    margin-top: 7px;
+  }
+}
+@media (max-width: 760px) {
+  .is-still .journey-stage {
+    padding: 0 7% 32px;
+  }
+  .is-still .journey-media {
+    margin: 0 -8.14% 35px;
+    height: 390px;
+  }
+  .is-still .journey-accessible h2 {
+    font-size: 42px;
+  }
+  .is-still .journey-accessible article {
+    display: block;
+    padding: 26px 0;
+  }
+  .is-still .journey-accessible article h3 {
+    margin: 12px 0;
+    font-size: 33px;
+  }
+  .journey-bottom {
+    font-size: 10px;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .gallery-stage {
+    padding: 66px 6% 42px;
+  }
+  .gallery-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 26px;
+  }
+  .gallery-heading h2 {
+    font-size: 45px;
+  }
+  .gallery-intro {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .gallery-intro > p {
+    max-width: none;
+    font-size: 12px;
+  }
+  .gallery-viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #88977b transparent;
+    padding-bottom: 14px;
+  }
+  .gallery-rail {
+    gap: 18px;
+  }
+  .journal-card {
+    width: 76vw;
+    scroll-snap-align: start;
+  }
+  .journal-photo {
+    height: 100vw;
+    max-height: 510px;
+    min-height: 0;
+  }
+  .journal-caption {
+    padding-top: 17px;
+  }
+  .journal-caption h3 {
+    font-size: 27px;
+  }
+  .gallery-footnote {
+    padding-top: 22px;
+    font-size: 8px;
+    gap: 14px;
+  }
+  .gallery-footnote > span:last-child {
+    display: none;
+  }
+  .gallery-dialog {
+    padding: 14px;
+  }
+  .gallery-dialog-card > img {
+    max-height: 65dvh;
+    min-height: 260px;
+    object-fit: cover;
+  }
+  .photograph-caption {
+    padding: 22px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .photograph-caption h2 {
+    font-size: 27px;
+  }
+  .photograph-arrows {
+    margin-left: auto;
+  }
+  html[data-motion='reduced'] .gallery-rail {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  html[data-motion='reduced'] .gallery-viewport {
+    overflow: visible;
+  }
+  html[data-motion='reduced'] .journal-photo {
+    height: 105vw;
+    max-height: 480px;
+  }
+}

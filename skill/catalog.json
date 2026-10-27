@@ -1,0 +1,10 @@
+{
+  "userTitleEn": "Scroll-driven websites",
+  "userTitleRu": "Сайты с анимацией при прокрутке",
+  "userTitleEs": "Sitios web animados al desplazarse",
+  "userDescriptionEn": "Build scroll-driven stories with layered scenes, typography, route drawing, parallax, galleries, particles and generated films. Includes smooth desktop scrolling, reliable video seeking, accessible mobile fallbacks and an extendable Amazi example.",
+  "userDescriptionRu": "Создавайте истории с анимацией при прокрутке: многослойные сцены, типографика, маршруты, параллакс, галереи, частицы и сгенерированное видео. Плавная прокрутка, точная перемотка, доступная мобильная версия и расширяемый пример для Amazi.",
+  "userDescriptionEs": "Crea historias al desplazarse con escenas por capas, tipografía, rutas, paralaje, galerías, partículas y vídeos generados. Incluye desplazamiento fluido, búsqueda de fotogramas, alternativas móviles accesibles y un ejemplo ampliable para Amazi.",
+  "icon": "mouse",
+  "agentDescription": "Use for requested scroll-driven websites, scrollytelling, cinematic layered heroes, parallax, pinned storytelling, horizontal galleries, scroll-controlled video, or smoothness fixes to these experiences. Diagnose desktop wheel movement separately from animation timing and video seek performance. Implement within the existing application with mobile composition, accessible controls, reduced-motion fallbacks and proportionate verification. Do not add cinematic effects to ordinary scrollable documents or unrelated tasks. Follow Amazi design, managed-media and tool-permission workflows. Covers the development flow from static composition and a tested vertical slice to modular chapters, SVG/mask/particle effects, generated ambient video, lifecycle ownership, Amazi application import and production validation."
+}

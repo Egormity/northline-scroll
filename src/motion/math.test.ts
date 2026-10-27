@@ -18,7 +18,8 @@ describe('authored scroll timeline', () => {
   });
   it('gives each beat a fully readable hold and preserves the opening and ending', () => {
     expect(beatOpacity(0, 0, 3)).toBe(1);
-    for (let index = 0; index < 3; index++) expect(beatOpacity((index + 0.5) / 3, index, 3)).toBe(1);
+    for (let index = 0; index < 3; index++)
+      expect(beatOpacity((index + 0.5) / 3, index, 3)).toBe(1);
     expect(beatOpacity(1, 2, 3)).toBe(1);
   });
 });

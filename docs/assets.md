@@ -4,7 +4,7 @@ The journal is a fictional design example, not an advertised itinerary. Its gene
 
 ## Real scroll-controlled film
 
-**Work:** *DJI 0147 Soothing South Coast Waves*
+**Work:** _DJI 0147 Soothing South Coast Waves_
 
 **Creator:** The No Nonsense Group / Wikimedia contributor Ulric Algar
 
@@ -20,17 +20,17 @@ The adaptation takes 300 frames beginning approximately two seconds into the sou
 
 ### Verified file properties
 
-| Property | Delivered file |
-| --- | --- |
-| Duration | 10.01 seconds |
-| Dimensions | 1280×720 |
-| Frame rate | 30000/1001, approximately 29.97003 fps |
-| Frames | 300 |
-| Keyframes | 300; every frame is independently decodable |
-| Codec | H.264 / AVC, YUV420P |
-| Encoding | libx264, CRF 29, slow preset, GOP 1, no B frames |
-| Bytes | 7,993,004, approximately 7.62 MiB |
-| MP4 metadata | Front-loaded with `+faststart` |
+| Property     | Delivered file                                   |
+| ------------ | ------------------------------------------------ |
+| Duration     | 10.01 seconds                                    |
+| Dimensions   | 1280×720                                         |
+| Frame rate   | 30000/1001, approximately 29.97003 fps           |
+| Frames       | 300                                              |
+| Keyframes    | 300; every frame is independently decodable      |
+| Codec        | H.264 / AVC, YUV420P                             |
+| Encoding     | libx264, CRF 29, slow preset, GOP 1, no B frames |
+| Bytes        | 7,993,004, approximately 7.62 MiB                |
+| MP4 metadata | Front-loaded with `+faststart`                   |
 
 The source is a 36,313,177-byte VP9 WebM, 1920×1080, approximately 20.75 seconds at nominal 29.97 fps. The source frame rate is preserved. The all-intra derivative trades transfer size for short random-seek dependency chains. It is a separate asset; merely having many source frames would not have established good seek behavior.
 
@@ -53,10 +53,14 @@ On this development machine, headless Chrome 156 loaded the local derivative and
 
 Three original fictional landscape assets were created for this example with the built-in OpenAI image generation tool. They are illustrative generated images, not documentary photographs of the film's location. They were converted to WebP for local delivery; no external image API or hotlinked file is needed at runtime.
 
-| File | Subject | Dimensions |
-| --- | --- | --- |
-| `public/images/coast.webp` | Imagined mossy Atlantic cliffs and black beach | 1672×941 |
-| `public/images/forest.webp` | Imagined misty forest footpath | 1536×1024 |
-| `public/images/cabin.webp` | Imagined timber cabin beside a northern lake | 1536×1024 |
+| File                        | Subject                                        | Dimensions |
+| --------------------------- | ---------------------------------------------- | ---------- |
+| `public/images/coast.webp`  | Imagined mossy Atlantic cliffs and black beach | 1672×941   |
+| `public/images/forest.webp` | Imagined misty forest footpath                 | 1536×1024  |
+| `public/images/cabin.webp`  | Imagined timber cabin beside a northern lake   | 1536×1024  |
 
 The exact prompt set is recorded in [asset-prompts.md](asset-prompts.md). Generated originals remain in the image-generation output directory; the website uses the copies in `public/images`.
+
+## Generated ambient films
+
+The coast and forest chapters use separate FAL-generated clips and frame-matched posters. Their prompts, provider model, delivery derivatives and provenance are documented in [generated-films.md](generated-films.md). They use ordinary visibility-aware playback; they do not replace the licensed scrubbed journey above.

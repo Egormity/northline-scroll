@@ -21,17 +21,17 @@ branch. Northline's example branch is `feature/codex/northline-scroll/2026-10-27
 
 ## Application settings
 
-| Setting | Value |
-| --- | --- |
-| Development command | `pnpm install --ignore-scripts && exec pnpm run dev` |
-| Development port | `10000` |
-| Development and production tools | `node-22`, `pnpm-10` |
-| Editor adapters | `vite-jsx-source-selection` |
-| Request adapters | `vite-http` |
-| Preview / public URL / publish | Enabled |
-| Production build context | `application` |
-| Production command override | Unset; use the Docker image command |
-| Production port | `10000` |
+| Setting                          | Value                                                |
+| -------------------------------- | ---------------------------------------------------- |
+| Development command              | `pnpm install --ignore-scripts && exec pnpm run dev` |
+| Development port                 | `10000`                                              |
+| Development and production tools | `node-22`, `pnpm-10`                                 |
+| Editor adapters                  | `vite-jsx-source-selection`                          |
+| Request adapters                 | `vite-http`                                          |
+| Preview / public URL / publish   | Enabled                                              |
+| Production build context         | `application`                                        |
+| Production command override      | Unset; use the Docker image command                  |
+| Production port                  | `10000`                                              |
 
 The current Amazi tool named `pnpm-10` supplies pnpm 11.7.0; `packageManager` pins that version.
 These are application settings in Amazi, not environment variables to add to the repository.

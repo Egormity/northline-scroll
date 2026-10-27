@@ -1,16 +1,33 @@
 import { videoFrame, videoTime } from './math';
 
-export interface VideoManifest { fps: number; frameCount: number; duration: number }
+export interface VideoManifest {
+  fps: number;
+  frameCount: number;
+  duration: number;
+}
 
 export const validManifest = (value: unknown): value is VideoManifest => {
   if (!value || typeof value !== 'object') return false;
   const item = value as VideoManifest;
-  return Number.isFinite(item.fps) && item.fps > 0 && item.fps <= 120
-    && Number.isInteger(item.frameCount) && item.frameCount > 1 && item.frameCount <= 7200
-    && Number.isFinite(item.duration) && item.duration > 0 && item.duration <= 60;
+  return (
+    Number.isFinite(item.fps) &&
+    item.fps > 0 &&
+    item.fps <= 120 &&
+    Number.isInteger(item.frameCount) &&
+    item.frameCount > 1 &&
+    item.frameCount <= 7200 &&
+    Number.isFinite(item.duration) &&
+    item.duration > 0 &&
+    item.duration <= 60
+  );
 };
 
-export const createVideoScrubber = (video: HTMLVideoElement, manifest: VideoManifest, onReady: () => void, onError: () => void) => {
+export const createVideoScrubber = (
+  video: HTMLVideoElement,
+  manifest: VideoManifest,
+  onReady: () => void,
+  onError: () => void,
+) => {
   let desiredFrame = 0;
   let requestedFrame = -1;
   let pending = false;
@@ -24,8 +41,18 @@ export const createVideoScrubber = (video: HTMLVideoElement, manifest: VideoMani
   const flush = () => {
     frame = 0;
     if (disposed) return;
-    if (video.error) { onError(); return; }
-    if (pending || video.seeking || video.readyState < 1 || !Number.isFinite(video.duration) || video.duration <= 0) return;
+    if (video.error) {
+      onError();
+      return;
+    }
+    if (
+      pending ||
+      video.seeking ||
+      video.readyState < 1 ||
+      !Number.isFinite(video.duration) ||
+      video.duration <= 0
+    )
+      return;
     if (desiredFrame === requestedFrame) return;
     try {
       pending = true;
@@ -38,10 +65,18 @@ export const createVideoScrubber = (video: HTMLVideoElement, manifest: VideoMani
       onError();
     }
   };
-  const queue = () => { if (!disposed && !frame) frame = requestAnimationFrame(flush); };
+  const queue = () => {
+    if (!disposed && !frame) frame = requestAnimationFrame(flush);
+  };
   const ready = () => {
-    if (video.error) { onError(); return; }
-    if (video.readyState >= 2 && !readyNotified) { readyNotified = true; onReady(); }
+    if (video.error) {
+      onError();
+      return;
+    }
+    if (video.readyState >= 2 && !readyNotified) {
+      readyNotified = true;
+      onReady();
+    }
     queue();
   };
   const seeked = () => {
@@ -49,7 +84,10 @@ export const createVideoScrubber = (video: HTMLVideoElement, manifest: VideoMani
     video.dataset.seekMs = (performance.now() - startedAt).toFixed(1);
     ready();
   };
-  const error = () => { pending = false; onError(); };
+  const error = () => {
+    pending = false;
+    onError();
+  };
   const presented = (_now: number, metadata: VideoFrameCallbackMetadata) => {
     if (disposed) return;
     presentedCount++;
@@ -62,10 +100,14 @@ export const createVideoScrubber = (video: HTMLVideoElement, manifest: VideoMani
   video.addEventListener('loadeddata', ready);
   video.addEventListener('seeked', seeked);
   video.addEventListener('error', error);
-  if ('requestVideoFrameCallback' in video) presentedCallback = video.requestVideoFrameCallback(presented);
+  if ('requestVideoFrameCallback' in video)
+    presentedCallback = video.requestVideoFrameCallback(presented);
   ready();
   return {
-    setProgress(progress: number) { desiredFrame = videoFrame(progress, manifest.frameCount); queue(); },
+    setProgress(progress: number) {
+      desiredFrame = videoFrame(progress, manifest.frameCount);
+      queue();
+    },
     destroy() {
       disposed = true;
       cancelAnimationFrame(frame);
