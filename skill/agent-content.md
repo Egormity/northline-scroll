@@ -13,11 +13,11 @@ Use Amazi's registered skills when their scope applies: `design-flow` for comple
 1. Inspect the existing application, dependency versions, source path, content and media before choosing effects. Write a small scene map with opening/hold/exit states and native mobile/motion-off alternatives. Establish a transfer/decode budget and a clear primary visitor action.
 2. Build and verify a readable static page first. Implement one representative interactive chapter end to end, including its controls, loading/error state and cleanup, before extending the pattern. Then compose contrasting rhythms: reading, movement, interaction and rest. A longer page needs meaningful additional content, not repeated blank pinning.
 3. Keep chapter components, story data, motion mapping, media lifecycle and styling in focused files. Make content and scene-specific durations easy to change. An added chapter should reuse shared progress/preferences without editing the low-level video decoder or replacing the page scroll controller.
-4. In Amazi inspect the application catalog and load `project-application-configuration` when changing topology. Import supplied source through `empty_application` into its returned source root; Git synchronization does not register an application. Keep package manifest, lockfile, HTML entry and Dockerfile at that application's root. Honor injected `PORT`, keep development reachable on `0.0.0.0`, and put actual production startup in Docker ENTRYPOINT/CMD. Do not replace an existing application's configured source path merely to copy a template.
+4. In Amazi inspect the application catalog and load `project-application-configuration` when changing topology. Keep each application in its own standalone folder inside the project repository. Inspect supplied source to locate its current application subtree, then import only that subtree's contents through `empty_application` into its returned source root; Git synchronization does not register an application. Keep package manifest, lockfile, HTML entry and Dockerfile at that application's root, with no runtime dependencies on template metadata outside it. Use the application as the Docker build context when it is self-contained. Honor injected `PORT`, keep development reachable on `0.0.0.0`, and put actual production startup in Docker ENTRYPOINT/CMD. Do not replace an existing application's configured source path merely to copy a template.
 5. Format authored source, including HTML, JSX and CSS, with the repository formatter; bundled/minified output belongs in ignored build output. Preserve the pinned package manager and frozen lockfile. Verify the real build image, local media paths, health response and byte ranges when changing deployment or media delivery.
 6. Verify a thin vertical slice, then scene transitions, reversal, resizing, live motion changes and final performance. Integrate only inspected media and record its provenance. Report what actually works in the demonstrated template and which advanced mechanisms are guidance for extension.
 
-For Amazi setup see [Applications](https://docs.amazi.pro/en/applications), [Publishing](https://docs.amazi.pro/en/publishing-and-domains) and the example's `docs/amazi.md`. Do not create a backend, provider connection or physics engine for a static editorial page unless the requested workflow needs it.
+For Amazi setup see [Applications](https://docs.amazi.pro/en/applications), [Publishing](https://docs.amazi.pro/en/publishing-and-domains) and the example's current setup documentation. Do not create a backend, provider connection or physics engine for a static editorial page unless the requested workflow needs it.
 
 ## Plan the experience
 
@@ -139,13 +139,18 @@ Finish with the implemented experience, important adaptations, verification actu
 
 ## Working example: Northline
 
-[Northline source repository](https://github.com/Egormity/northline-scroll) is a public example of this guidance on the `main` branch. The README explains local preview and desktop launch; a public production preview has not been added yet.
+[Northline source repository](https://github.com/Egormity/northline-scroll) is a public example of this guidance. Start with its current README and inspect the repository to locate the standalone application, setup instructions and extension guidance; file names and layout can change. A public production preview has not been added yet.
 
 The fictional outdoor journal demonstrates a layered photographic hero, progressive typography, one Lenis controller over native scrolling, a pinned scroll-controlled film, an SVG route with keyboard-selectable waypoints, an expanding coast-film composition, a measured horizontal photo rail, a circular forest reveal with bounded scroll-driven particles, accessible photograph dialogs and a real field-notes download. Two generated ambient films use visibility-aware playback with pause controls; they are separate from the scrubbed film. Phones and reduced-motion layouts retain posters and normally flowing text without requesting video.
 
-Read `docs/scroll-system.md` for the architecture and `docs/extending.md` for adding a chapter; `src/motion/MotionProvider.tsx`, `useSceneProgress.ts`, and `videoScrubber.ts` for scroll and seek ownership; `src/components/Journey.tsx` and `Gallery.tsx` for the scenes; and `e2e/chapters.spec.ts` for forward/reverse presented-frame, delivery, fallback, and interaction checks.
+Inspect the current scroll controller, progress mapping, media seek controller, representative chapters,
+and interaction tests before adapting them. Establish their actual ownership and lifecycle from source
+rather than assuming a particular file path or the continued presence of an earlier example feature.
 
-Its 10.01-second film derivative preserves 300 source frames at approximately 29.97 fps and encodes every frame as a keyframe. This is one measured tradeoff, not a universal encoding prescription. `docs/assets.md` documents the original Wikimedia Commons footage, CC BY-SA 4.0 attribution, adaptation, encoding recipe, and isolated measurements. Preserve the film and poster's attribution/license when reusing them. Generated still images and FAL ambient films have separate provenance in `docs/assets.md` and `docs/generated-films.md`; do not apply the Commons license to unrelated generated assets.
+Inspect the current media provenance and frame/keyframe measurements before reusing a film; an example's
+encoding is one tradeoff, not a universal prescription. Preserve each reused asset's attribution and
+license. Keep generated media provenance separate from stock-footage licensing, and do not apply one
+asset's license to unrelated generated assets.
 
 Adapt the mechanisms to the current brief. The outdoor story, typography, desktop launcher, and exact scene distances are example choices, not requirements for every website.
 

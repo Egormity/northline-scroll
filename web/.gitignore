@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.playwright/
+*.log
+__pycache__/
+.env
+.env.*
+!.env.example
