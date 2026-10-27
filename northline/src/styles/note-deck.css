@@ -1,0 +1,120 @@
+.field-notes {
+  overflow-x: clip;
+}
+.note-deck {
+  width: 100%;
+  max-width: 380px;
+  justify-self: center;
+  perspective: 1100px;
+  padding: 18px 10px 0;
+}
+.note-deck-stage {
+  position: relative;
+  height: 460px;
+  transform: translateY(var(--deck-rise, 0px)) rotate(var(--deck-turn, 0deg));
+}
+.deck-card.field-note-card {
+  position: absolute;
+  inset: 0;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-self: auto;
+  transform-origin: 50% 88%;
+  z-index: calc(3 - var(--depth));
+  transform: translate(calc(var(--depth) * 9px), calc(var(--depth) * -9px))
+    rotate(calc(var(--depth) * 5deg - 3deg)) scale(calc(1 - var(--depth) * 0.035));
+  transition:
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 450ms;
+  box-shadow: 0 10px 25px #21351d10;
+}
+.deck-card[data-depth='1'] {
+  background: #d8ddca;
+}
+.deck-card[data-depth='2'] {
+  background: #b7c1a4;
+}
+.deck-card[data-depth='0'] {
+  background: #f5f2e9;
+}
+.is-responsive .deck-card[data-depth='0'] {
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) rotate(-3deg);
+}
+.deck-card .note-card-bottom {
+  margin-top: auto;
+}
+.note-deck-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  position: relative;
+  margin-top: 42px;
+}
+.note-deck-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #aab79c;
+  border-radius: 50%;
+  background: transparent;
+  transition:
+    color 180ms,
+    background-color 180ms;
+}
+.note-deck-controls button:hover {
+  background: #30462b;
+  color: #f5f2e9;
+}
+.note-deck-controls > span {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+}
+.note-deck-controls > span > span {
+  color: #7b876f;
+}
+.note-deck-controls small {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 0.13em;
+  margin-top: 8px;
+  color: #66775a;
+}
+html[data-motion='reduced'] .note-deck-stage {
+  transform: none;
+}
+html[data-motion='reduced'] .deck-card[data-depth='0'] {
+  transform: none;
+}
+@media (max-width: 1100px) {
+  .note-deck-stage .deck-card {
+    transform: translate(calc(var(--depth) * 5px), calc(var(--depth) * -7px))
+      rotate(calc(var(--depth) * 2deg - 2deg)) scale(calc(1 - var(--depth) * 0.035));
+  }
+}
+@media (max-width: 760px) {
+  .note-deck {
+    align-self: center;
+    max-width: 325px;
+    padding: 18px 12px 0;
+  }
+  .note-deck-stage {
+    height: 420px;
+    transform: none;
+  }
+  .note-deck .deck-card {
+    padding: 26px;
+  }
+  .deck-card h3 {
+    font-size: 46px;
+  }
+  .note-deck-controls {
+    margin-top: 28px;
+  }
+}

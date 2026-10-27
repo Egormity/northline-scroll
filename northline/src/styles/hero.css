@@ -1,0 +1,135 @@
+.hero {
+  height: max(800px, 100svh);
+  min-height: 800px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #f8f5ed;
+  background: #46584b;
+}
+.hero-media,
+.hero-shade {
+  position: absolute;
+  inset: 0;
+}
+.hero-media {
+  z-index: -1;
+  overflow: hidden;
+}
+.hero-image {
+  width: 100%;
+  height: calc(100% + 100px);
+  max-width: none;
+  position: absolute;
+  top: -50px;
+  object-fit: cover;
+  object-position: center 51%;
+  transform: translateY(var(--hero-pan, 0px));
+  will-change: transform;
+}
+.hero-shade {
+  background:
+    linear-gradient(90deg, #14201782 0%, #14201729 55%, #1420170a 100%),
+    linear-gradient(0deg, #111d1699, transparent 35%, transparent 70%, #111d1645);
+}
+.hero-content {
+  position: absolute;
+  left: clamp(24px, 5.5vw, 96px);
+  top: 19.8%;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+.small-star {
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(100px, 12.5vw, 222px);
+  line-height: 0.88;
+  letter-spacing: -0.07em;
+  font-weight: 400;
+  margin: 38px 0 36px -6px;
+}
+.hero h1 > span {
+  font-style: italic;
+  letter-spacing: -0.075em;
+}
+.hero-introduction {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+  margin-left: 3px;
+}
+.fine-rule {
+  width: 42px;
+  height: 1px;
+  background: #f6f2e9bb;
+}
+.hero-introduction p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #f3f0e9;
+}
+.hero-side-note {
+  position: absolute;
+  right: 38px;
+  top: 48%;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.19em;
+  font-size: 10px;
+}
+.hero-bottom {
+  position: absolute;
+  bottom: 43px;
+  left: clamp(24px, 5.5vw, 96px);
+  right: clamp(24px, 3.5vw, 64px);
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+.journey-link {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 14px;
+}
+.journey-link small {
+  display: block;
+  margin-top: 6px;
+  color: #e3e6db;
+  font-size: 12px;
+}
+.journey-link:hover .round-arrow {
+  background: #f8f5ed;
+  color: #243525;
+}
+.hero-edition {
+  position: relative;
+  padding-right: 56px;
+}
+.hero-edition > span {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #e7e9df;
+}
+.hero-edition > p {
+  font-size: 13px;
+  line-height: 1.65;
+  margin-top: 12px;
+}
+.hero-edition > svg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+html[data-motion='reduced'] .hero-image {
+  transform: none;
+  will-change: auto;
+}

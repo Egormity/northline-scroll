@@ -1,0 +1,24 @@
+NORTHLINE — IMAGE & FILM CREDITS
+
+Northline is a fictional design example. Its visuals are not presented as one real journey or itinerary.
+
+FILM AND POSTER
+
+“DJI 0147 Soothing South Coast Waves”
+Creator: The No Nonsense Group / Ulric Algar
+Original location: Shelly Beach, KwaZulu-Natal, South Africa
+Original recording date: 7 April 2021
+Source: https://commons.wikimedia.org/wiki/File:DJI_0147_Soothing_South_Coast_Waves.webm
+License: Creative Commons Attribution-ShareAlike 4.0 International
+License URL: https://creativecommons.org/licenses/by-sa/4.0/
+
+Changes: A 300-frame, 10.01-second excerpt beginning approximately two seconds into the source was resized to 1280×720 and re-encoded as silent all-intra H.264 at the source's nominal 30000/1001 frame rate. The poster is extracted from the excerpt's first frame. No frame interpolation or speed change was applied.
+
+The adapted journey.mp4 film and journey-poster.jpg image are provided under the same CC BY-SA 4.0 license. No endorsement by the original creator is implied.
+
+GENERATED IMAGES
+
+coast.webp, forest.webp, cabin.webp:
+Original fictional landscape images generated for Northline using the built-in OpenAI image generation tool. These are illustrative images, not documentary photographs of the film location. Prompts and preparation details are included in the repository's docs/asset-prompts.md and docs/assets.md files.
+
+All media is served locally by this website. No remote image/video provider is contacted during normal viewing.
